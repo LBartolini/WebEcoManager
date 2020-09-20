@@ -7,53 +7,47 @@
 {% block body %}
 <div>
 	<ul class="list-group">
-	  <li class="list-group-item">Cras justo odio</li>
-	  <li class="list-group-item">Dapibus ac facilisis in</li>
-	  <li class="list-group-item">Morbi leo risus</li>
-	  <li class="list-group-item">Porta ac consectetur ac</li>
-	  <li class="list-group-item">Vestibulum at eros</li>
-	  <li class="list-group-item">Cras justo odio</li>
-	  <li class="list-group-item">Dapibus ac facilisis in</li>
-	  <li class="list-group-item">Morbi leo risus</li>
-	  <li class="list-group-item">Porta ac consectetur ac</li>
-	  <li class="list-group-item">Vestibulum at eros</li>
-	  <li class="list-group-item">Cras justo odio</li>
-	  <li class="list-group-item">Dapibus ac facilisis in</li>
-	  <li class="list-group-item">Morbi leo risus</li>
-	  <li class="list-group-item">Porta ac consectetur ac</li>
+		{% for val, descr in transazioni[::-1] %}
+	  	<li class="list-group-item">
+			  {% if val > 0 %} <h4 style="color: green;">{{val}}</h4> 
+			  {% else %} <h4 style="color: red;">{{val}}</h4> {% endif %}
+			  <bold>{{descr}}</bold></li>
+	 	{% endfor %}
 	</ul>
 </div>
 <footer class="pt-3 pb-2" id="inserisci-transazione">
-	<form action="/insert" method="POST">
-	  <div class="form-row align-items-center">
-	    <div class="col-auto">
-	      <div class="input-group mb-2">
-	        <div class="input-group-prepend">
-	          <div class="input-group-text bg-dark" style="color: lightblue;">Euro</div>
-	        </div>
-	        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="..." name="euro">
-	      </div>
-	    </div>
-	    <div class="col-auto">
-	      <div class="input-group mb-2">
-	        <div class="input-group-prepend">
-	          <div class="input-group-text bg-dark"  style="color: lightblue;">Descrizione</div>
-	        </div>
-	        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="..." name="descrizione">
-	      </div>
-	    </div>
-	    <div class="col-auto">
-	      <div class="form-check mb-2">
-	        <input class="form-check-input" type="checkbox" id="autoSizingCheck" name="ricarica">
-		        <label class="form-check-label" for="autoSizingCheck">
-		          Ricarica
-		        </label>
-	      </div>
-	    </div>
-	    <div class="col-auto">
-	      <button type="submit" class="btn btn-dark btn-outline-success mb-2">Inserisci</button>
-	    </div>
-	  </div>
-	</form>
+	<div class="container">
+		<form action="/insert" method="POST">
+		<div class="form-row align-items-center">
+			<div class="col-auto">
+			<div class="input-group mb-2">
+				<div class="input-group-prepend">
+				<div class="input-group-text bg-dark" style="color: lightblue;">Euro</div>
+				</div>
+				<input type="text" class="form-control" id="inlineFormInputGroup" required placeholder="..." name="euro">
+			</div>
+			</div>
+			<div class="col-auto">
+			<div class="input-group mb-2">
+				<div class="input-group-prepend">
+				<div class="input-group-text bg-dark"  style="color: lightblue;">Descrizione</div>
+				</div>
+				<input type="text" class="form-control" id="inlineFormInputGroup" required placeholder="..." name="descrizione">
+			</div>
+			</div>
+			<div class="col-auto">
+			<div class="form-check mb-2">
+				<input class="form-check-input" type="checkbox" id="autoSizingCheck" name="ricarica">
+					<label class="form-check-label" for="autoSizingCheck">
+					Ricarica
+					</label>
+			</div>
+			</div>
+			<div class="col-auto">
+			<button type="submit" class="btn btn-dark btn-outline-success mb-2">Inserisci</button>
+			</div>
+		</div>
+		</form>
+	</div>
 </footer>
 {% endblock %}

@@ -8,10 +8,19 @@
 <div>
 	<ul class="list-group">
 		{% for val, descr in transazioni[::-1] %}
-	  	<li class="list-group-item">
-			  {% if val > 0 %} <h4 style="color: green;">{{val}}</h4> 
-			  {% else %} <h4 style="color: red;">{{val}}</h4> {% endif %}
-			  <bold>{{descr}}</bold></li>
+		
+			<li class="list-group-item">
+				<table class="table">
+					<thead>
+					  <tr>
+						<th scope="col">{% if val > 0 %} <h4 style="color: green;">{{val}}</h4> 
+							{% else %} <h4 style="color: red;">{{val}}</h4> {% endif %}</th>
+						<th scope="col"><bold>{{descr}}</bold></th>
+						<th scope="col" class="text-right"><button type="button" class="btn btn-danger">X</button>	</th>
+					  </tr>
+					</thead>
+				</table>
+			</li>
 	 	{% endfor %}
 	</ul>
 </div>

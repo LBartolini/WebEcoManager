@@ -51,7 +51,7 @@ def reserved():
 		else:
 			return redirect('/home')
 	else:
-		# login authentication
+		#TODO login authentication
 		session['username'] = request.form['username']
 		logged_in = True
     
